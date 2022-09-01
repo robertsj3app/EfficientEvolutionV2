@@ -44,22 +44,25 @@ class Genome:
 
 
 class Individual:
+    ids: list = []
 
-    def __init__(self: Self, genome: Genome, id: int=0):
+    def __init__(self: Self, genome: Genome):
         if(genome == {}):
             sys.exit("Cannot create individual with empty genome!")
         self.genome = genome
-        self.id = id
+        self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
+        Individual.ids.append(self.id)
 
     def reproduce(self: Self, other: Individual):
         offspring_genome = Genome.mutate(Genome.crossover(self.genome, other.genome))
         offspring = Individual(offspring_genome)
         return offspring
 
-traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism"]
-test1 = Individual(Genome(traits), id=1)
-test2 = Individual(Genome(traits), id=2)
+traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
+test1 = Individual(Genome(traits))
+test2 = Individual(Genome(traits))
 test1.genome.display()
 test2.genome.display()
 off1 = test1.reproduce(test2)
 off1.genome.display()
+print(Individual.ids)
