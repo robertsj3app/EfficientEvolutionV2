@@ -1,0 +1,24 @@
+Position:    (0,0)
+Resident:    0
+Food:        0
+Water:       0
+Temperature: 0
+
+Position:    (0,1)
+Resident:    0
+Food:        0
+Water:       0
+Temperature: 0
+
+Position:    (1,0)
+Resident:    0
+Food:        0
+Water:       0
+Temperature: 0
+
+Position:    (1,1)
+Resident:    0
+Food:        0
+Water:       0
+Temperature: 0
+
