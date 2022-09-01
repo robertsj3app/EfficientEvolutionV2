@@ -14,12 +14,15 @@ class Environment(object):
 #            if gene[1] == "movement":
 #                for tile in
 
-    def get_tiles_around(self, position, range):
+    def get_tiles_around(self, position, sight_range):
         tiles = []
         for i in range(3):
             for ii in range(3):
-                temp_tile = self.get_tile((position[0] - (3/3) + i, position[0] - (3/3) + ii))
-
+                temp_tile = self.get_tile((position[0] - int(3/3) + i, position[0] - int(3/3) + ii))
+                if temp_tile is not None:
+                    tiles.append(temp_tile)
+                print(str(position[0] - (3/3) + i) + ", " + str(position[0] - (3/3) + ii))
+        return tiles
 
     def get_tile(self, position):
         if position[0] < 0 or position[0] >= self._x:
@@ -27,7 +30,6 @@ class Environment(object):
         if position[1] < 0 or position[1] >= self._y:
             return None
         return self._grid[position[0]][position[1]]
-
 
     def print_grid(self):
         for row in range(len(self._grid)):
@@ -48,9 +50,12 @@ class Environment(object):
                 self._appearance.write("\nTemperature: " + str(item.get_temperature()))
                 self._appearance.write("\n\n")
                 i += 1
+
+
 env = Environment()
 env.print_grid()
 env.print_attributes_to_file()
+env.get_tiles_around((0,0), 1)
 
 
 #if gene is movement decider
