@@ -4,10 +4,18 @@ from Individual import Genome
 
 class Environment(object):
     def __init__(self):
-        self._x = 4
-        self._y = 3
+        self._x = 2
+        self._y = 2
         self._grid = [[Tile() for i in range(self._x)] for ii in range(self._y)]
         self._appearance = open(r"./Appearance.txt", "w")
+
+
+    def insert_species(self, ind, positions):
+        for pos in positions:
+            self.insert_one_creature(ind.copy(), pos)
+
+    def insert_one_creature(self, ind, position):
+        self.get_tile(position).insert_individual(ind)
 
     #def pass_time:
 
@@ -64,16 +72,19 @@ class Environment(object):
             to_print = ""
             i = 0
             for item in self._grid[row]:
-                self._appearance.write("Position:    (" + str(row) + "," + str(i) + ")")
-                self._appearance.write("\nResidents:   " + str(item.get_individuals()))
-                self._appearance.write("\nFood:        " + str(item.get_food()))
-                self._appearance.write("\nWater:       " + str(item.get_water()))
-                self._appearance.write("\nTemperature: " + str(item.get_temperature()))
+                self._appearance.write("Position:     (" + str(row) + "," + str(i) + ")")
+                self._appearance.write("\nResidents:    " + str(item.get_individuals()))
+                self._appearance.write("\nResident IDs: " + str(item.get_ids()))
+                self._appearance.write("\nFood:         " + str(item.get_food()))
+                self._appearance.write("\nWater:        " + str(item.get_water()))
+                self._appearance.write("\nTemperature:  " + str(item.get_temperature()))
                 self._appearance.write("\n\n")
                 i += 1
 
 
 env = Environment()
+traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
+env.insert_one_creature(Individual(Genome(traits)), (0,0))
 #env.print_grid()
 env.print_attributes_to_file()
 env.get_tiles_around((0,0), 2)
