@@ -3,7 +3,7 @@ class Tile:
         self._food = 0
         self._temperature = 0
         self._water = 0
-        self._individual = "0"
+        self._individuals = []
 
     def print(self):
         print("OO")
@@ -14,8 +14,8 @@ class Tile:
         return self._temperature
     def get_water(self):
         return self._water
-    def get_individual(self):
-        return self._individual
+    def get_individuals(self):
+        return self._individuals
 
     def set_food(self, inp):
         self._food = inp
@@ -24,7 +24,7 @@ class Tile:
     def set_water(self, inp):
         self._water = inp
     def set_individual(self, inp):
-        self._individual = inp
+        self._individuals = inp
 
 
 

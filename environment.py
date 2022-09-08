@@ -1,4 +1,6 @@
 from tile import Tile
+from Individual import Individual
+from Individual import Genome
 
 class Environment(object):
     def __init__(self):
@@ -10,19 +12,38 @@ class Environment(object):
     #def pass_time:
 
 #    def move_one_individual(self, ind):
-#        for gene in ind.get_genome():
-#            if gene[1] == "movement":
-#                for tile in
+#        tiles = self.get_tiles_around(ind.get_position(), ind.get_sight_range())
+#        tiles = self.set_favorability(ind, tiles)
+#        best_tiles = []
+#        best_tile = tiles[0][0]
+#        for i in range(len(tiles)):
+#            if tiles[i][1] >
+
 
     def get_tiles_around(self, position, sight_range):
         tiles = []
-        for i in range(3):
-            for ii in range(3):
-                temp_tile = self.get_tile((position[0] - int(3/3) + i, position[0] - int(3/3) + ii))
+        for i in range(1 + (sight_range * 2)):
+            for ii in range(1 + (sight_range * 2)):
+                temp_tile = self.get_tile((position[0] - sight_range + i, position[0] - sight_range + ii))
                 if temp_tile is not None:
-                    tiles.append(temp_tile)
-                print(str(position[0] - (3/3) + i) + ", " + str(position[0] - (3/3) + ii))
+                    tiles.append((temp_tile, 0))
+                #print(str(position[0] - sight_range + i) + ", " + str(position[0] - sight_range + ii))
         return tiles
+
+    #ind = individual
+    #tiles = (Tile, int)
+#    def set_favorability(self, ind, tiles):
+#        for gene in ind.get_genome():
+#            if "movement" in gene.get_name():
+#                for tile in tiles:
+#                    if "water" in gene.get_name():
+#                        if tile[0].get_water() >= 1:
+#                            tile[1] += gene[0]
+#                    elif "social" in gene.get_name():
+#                        if len(tile[0].get_individuals()) > 0:
+#                            tile[1] += gene[0]
+#                #here, consider making another class with the purpose of connecting genes to tile attributes
+#        return tiles
 
     def get_tile(self, position):
         if position[0] < 0 or position[0] >= self._x:
@@ -31,12 +52,12 @@ class Environment(object):
             return None
         return self._grid[position[0]][position[1]]
 
-    def print_grid(self):
-        for row in range(len(self._grid)):
-            to_print = ""
-            for item in self._grid[row]:
-                to_print += item.get_individual() + " "
-            print(to_print)
+ #   def print_grid(self):
+ #       for row in range(len(self._grid)):
+ #           to_print = ""
+ #           for item in self._grid[row]:
+ #               to_print += item.get_individuals() + " "
+ #           print(to_print)
 
     def print_attributes_to_file(self):
         for row in range(len(self._grid)):
@@ -44,7 +65,7 @@ class Environment(object):
             i = 0
             for item in self._grid[row]:
                 self._appearance.write("Position:    (" + str(row) + "," + str(i) + ")")
-                self._appearance.write("\nResident:    " + str(item.get_individual()))
+                self._appearance.write("\nResidents:   " + str(item.get_individuals()))
                 self._appearance.write("\nFood:        " + str(item.get_food()))
                 self._appearance.write("\nWater:       " + str(item.get_water()))
                 self._appearance.write("\nTemperature: " + str(item.get_temperature()))
@@ -53,9 +74,9 @@ class Environment(object):
 
 
 env = Environment()
-env.print_grid()
+#env.print_grid()
 env.print_attributes_to_file()
-env.get_tiles_around((0,0), 1)
+env.get_tiles_around((0,0), 2)
 
 
 #if gene is movement decider
