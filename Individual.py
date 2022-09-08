@@ -58,6 +58,9 @@ class Individual:
         offspring = Individual(offspring_genome)
         return offspring
 
+    def get_id(self: Self):
+        return self.id
+
 traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
 test1 = Individual(Genome(traits))
 test2 = Individual(Genome(traits))
