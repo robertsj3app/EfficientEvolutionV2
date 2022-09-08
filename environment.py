@@ -74,7 +74,7 @@ class Environment(object):
             for item in self._grid[row]:
                 self._appearance.write("Position:     (" + str(row) + "," + str(i) + ")")
                 self._appearance.write("\nResidents:    " + str(item.get_individuals()))
-                self._appearance.write("\nResident IDs: " + str(item.get_IDs()))
+                self._appearance.write("\nResident IDs: " + str(item.get_ids()))
                 self._appearance.write("\nFood:         " + str(item.get_food()))
                 self._appearance.write("\nWater:        " + str(item.get_water()))
                 self._appearance.write("\nTemperature:  " + str(item.get_temperature()))
