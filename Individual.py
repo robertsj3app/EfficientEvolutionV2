@@ -1,8 +1,8 @@
 from __future__ import annotations
 import random
 import sys
-import typing
 from typing_extensions import Self
+from numpy import random
 
 
 class Genome:
@@ -35,7 +35,11 @@ class Genome:
             mutation_rate = 1 / len(genome)
         for t in genome:
             if(random.random() <= mutation_rate):
-                genome[t] = random.random()
+                genome[t] = genome[t] + random.normal(genome[t], 0.33) if random.random() <= 0.5 else genome[t] - random.normal(genome[t], 0.33)
+                if(genome[t] < 0):
+                    genome[t] = 0
+                elif(genome[t] > 1):
+                    genome[t] = 1
         return Genome(genome)
 
 
