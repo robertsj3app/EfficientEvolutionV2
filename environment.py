@@ -19,13 +19,16 @@ class Environment(object):
 
     #def pass_time:
 
-#    def move_one_individual(self, ind):
-#        tiles = self.get_tiles_around(ind.get_position(), ind.get_sight_range())
-#        tiles = self.set_favorability(ind, tiles)
-#        best_tiles = []
-#        best_tile = tiles[0][0]
-#        for i in range(len(tiles)):
-#            if tiles[i][1] >
+    def move_one_individual(self, ind, new_pos):
+        self.get_tile(new_pos).insert_individual(ind)
+        self.get_tile(ind.get_position()).remove_individual(ind)
+        
+        #tiles = self.get_tiles_around(ind.get_position(), ind.get_sight_range())
+        #tiles = self.set_favorability(ind, tiles)
+        #best_tiles = []
+        #best_tile = tiles[0][0]
+       # for i in range(len(tiles)):
+       #     if tiles[i][1] >
 
 
     def get_tiles_around(self, position, sight_range):
@@ -40,17 +43,20 @@ class Environment(object):
 
     #ind = individual
     #tiles = (Tile, int)
-#    def set_favorability(self, ind, tiles):
-#        for gene in ind.get_genome():
-#            if "movement" in gene.get_name():
+    def get_favorable_tile(self, ind, tiles):
+        return ind.get_favorable_tile(ind, tiles)
+#        temp_names = list(ind.genome.genome.keys())
+#        temp_genes = ind.genome.genome.keys()
+#        for i in range(ind.genome.genome.keys()):
+#            if "movement" in temp_names[i]:
 #                for tile in tiles:
-#                    if "water" in gene.get_name():
+#                    if "water" in temp_names[i]:
 #                        if tile[0].get_water() >= 1:
-#                            tile[1] += gene[0]
-#                    elif "social" in gene.get_name():
-#                        if len(tile[0].get_individuals()) > 0:
-#                            tile[1] += gene[0]
-#                #here, consider making another class with the purpose of connecting genes to tile attributes
+#                            tile[1] += temp_genes[i]
+#                    elif "social" in temp_names[i]:
+#                       if len(tile[0].get_individuals()) > 0:
+#                            tile[1] += temp_genes[i]
+                #here, consider making another class with the purpose of connecting genes to tile attributes
 #        return tiles
 
     def get_tile(self, position):
@@ -84,7 +90,11 @@ class Environment(object):
 
 env = Environment()
 traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
-env.insert_one_creature(Individual(Genome(traits)), (0,0))
+ind = Individual(Genome(traits))
+env.insert_one_creature(ind, (0,0))
+print(type(ind.genome.genome.keys()))
+ks = ind.genome.genome.keys()
+print(f"KEYS: {list(ks)[0]}")
 #env.print_grid()
 env.print_attributes_to_file()
 env.get_tiles_around((0,0), 2)
