@@ -23,10 +23,10 @@ class Environment(object):
         self.get_tile(new_pos).insert_individual(ind)
         self.get_tile(ind.get_position()).remove_individual(ind)
         
-        tiles = self.get_tiles_around(ind.get_position(), ind.get_sight_range())
-        tiles = self.set_favorability(ind, tiles)
-        best_tiles = []
-        best_tile = tiles[0][0]
+        #tiles = self.get_tiles_around(ind.get_position(), ind.get_sight_range())
+        #tiles = self.set_favorability(ind, tiles)
+        #best_tiles = []
+        #best_tile = tiles[0][0]
        # for i in range(len(tiles)):
        #     if tiles[i][1] >
 
