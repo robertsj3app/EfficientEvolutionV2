@@ -1,28 +1,60 @@
 Position:     (0,0)
-Residents:    [<Individual.Individual object at 0x00000274880FF190>]
-Resident IDs: [3]
+Residents:    [<Individual.Individual object at 0x000001649D724310>]
+Resident IDs: None
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (0,1)
 Residents:    []
-Resident IDs: []
+Resident IDs: None
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (1,0)
 Residents:    []
-Resident IDs: []
+Resident IDs: None
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (1,1)
 Residents:    []
-Resident IDs: []
+Resident IDs: None
 Food:         0
 Water:        0
 Temperature:  0
+
+
+
+Position:     (0,0)
+Residents:    []
+Resident IDs: None
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (0,1)
+Residents:    []
+Resident IDs: None
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (1,0)
+Residents:    [<Individual.Individual object at 0x000001649D724310>]
+Resident IDs: None
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (1,1)
+Residents:    []
+Resident IDs: None
+Food:         0
+Water:        0
+Temperature:  0
+
+
 
