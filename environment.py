@@ -74,7 +74,7 @@ class Environment(object):
  #           print(to_print)
 
     def print_attributes_to_file(self):
-        for row in range(len(self._grid)):
+        for row in range(self._x):
             to_print = ""
             i = 0
             for item in self._grid[row]:

@@ -22,7 +22,7 @@ class Tile:
     def get_ids(self):
         arr = []
         for ind in self.individuals:
-            arr.append(ind.get_id())
+            arr.append(ind.id)
         return arr
 
     def set_food(self, inp):
