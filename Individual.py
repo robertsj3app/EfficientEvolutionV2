@@ -53,6 +53,7 @@ class Individual:
         self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
         Individual.ids.append(self.id)
         self.position = (-1, -1)
+        self.sight_range = 1
 
     def reproduce(self: Self, other: Individual):
         offspring_genome = Genome.mutate(Genome.crossover(self.genome, other.genome))

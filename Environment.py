@@ -6,11 +6,17 @@ from Individual import Genome
 
 class Environment(object):
     def __init__(self):
-        self.x = 2
-        self.y = 2
+        self.x = 10
+        self.y = 10
         self.grid = [[Tile() for i in range(self.x)] for ii in range(self.y)]
         self.appearance = open(r"./Appearance.txt", "w")
+        self.individuals = []
 
+    def pass_time(self):
+        for item in self.individuals():
+            #uh, I'll make this look better later
+            self.move_one_individual(item, self.get_tile_towards_tile(self.get_favorable_tile(item, self.get_tiles_around(item.position, item.sight_range)).position))
+            #more code here to change the individual - death, aging, hungerizing, etc.
 
     def insert_species(self, ind, positions):
         for pos in positions:
@@ -19,8 +25,6 @@ class Environment(object):
     def insert_one_creature(self, ind, position):
         self.get_tile(position).insert_individual(ind)
         ind.position = position
-
-    #def pass_time:
 
     def move_one_individual(self, ind, new_pos):
         self.get_tile(new_pos).insert_individual(ind)
@@ -107,12 +111,11 @@ class Environment(object):
         for row in range(len(self.grid)):
             to_print = ""
             for item in self.grid[row]:
-                to_print += item.get_individuals() + " "
+                to_print += "" + str(len(item.individuals)) + "  "
             print(to_print)
 
     def print_attributes_to_file(self):
         for row in range(self.x):
-            to_print = ""
             i = 0
             for item in self.grid[row]:
                 self.appearance.write("Position:     (" + str(row) + "," + str(i) + ")")
@@ -133,7 +136,7 @@ env.insert_one_creature(ind, (0,0))
 print(type(ind.genome.genome.keys()))
 ks = ind.genome.genome.keys()
 print(f"KEYS: {list(ks)[0]}")
-#env.print_grid()
+env.print_grid()
 env.print_attributes_to_file()
 env.get_tiles_around((0,0), 2)
 
@@ -142,7 +145,7 @@ env.move_one_individual(env.get_tile((0,0)).individuals[0], env.get_tile_towards
 env.print_attributes_to_file()
 
 print(env.get_tile((1,0)).individuals[0].position)
-
+env.print_grid()
 
 #if gene is movement decider
 ##    for loop to go through all those genes
