@@ -60,11 +60,11 @@ class Individual:
         offspring = Individual(offspring_genome)
         return offspring
 
-traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
-test1 = Individual(Genome(traits))
-test2 = Individual(Genome(traits))
-test1.genome.display()
-test2.genome.display()
-off1 = test1.reproduce(test2)
-off1.genome.display()
-print(Individual.ids)
+#traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
+#test1 = Individual(Genome(traits))
+#test2 = Individual(Genome(traits))
+#test1.genome.display()
+#test2.genome.display()
+#off1 = test1.reproduce(test2)
+#off1.genome.display()
+#print(Individual.ids)

@@ -1,1401 +1,699 @@
 Position:     (0,0)
-Residents:    [<Individual.Individual object at 0x000001461D28C9A0>]
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,1)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,9)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (1,0)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,1)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,9)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (2,0)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,1)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,9)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (3,0)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,1)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,9)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (4,0)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,1)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,9)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (5,0)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,1)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,9)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (6,0)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,1)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,9)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (7,0)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,1)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,9)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (8,0)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,1)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,9)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (9,0)
 Residents:    []
-Resident IDs: None
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (0,1)
+Residents:    [<Individual.Individual object at 0x0000021271641420>]
+Resident IDs: [0]
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (1,1)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (2,1)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (3,1)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (4,1)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (5,1)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (6,1)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (7,1)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (8,1)
+Residents:    []
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (9,1)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (9,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (9,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (9,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (9,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (9,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (9,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (9,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (9,9)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-
-
-Position:     (0,0)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,1)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (0,2)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (0,9)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,0)
-Residents:    [<Individual.Individual object at 0x000001461D28C9A0>]
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,1)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (1,2)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (1,9)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,0)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,1)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (2,2)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (2,9)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,0)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,1)
-Residents:    []
-Resident IDs: None
+Residents:    [<Individual.Individual object at 0x0000021271641420>]
+Resident IDs: [0]
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (3,2)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (3,9)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,0)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,1)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (4,2)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (4,9)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,0)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,1)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (5,2)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (5,9)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,0)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,1)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (6,2)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (6,9)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,0)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,1)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (7,2)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (7,9)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,0)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,1)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (8,2)
 Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,3)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,4)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,5)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,6)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,7)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,8)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (8,9)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (9,0)
-Residents:    []
-Resident IDs: None
-Food:         0
-Water:        0
-Temperature:  0
-
-Position:     (9,1)
-Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (9,2)
 Residents:    []
-Resident IDs: None
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (0,3)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (1,3)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (2,3)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (3,3)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (4,3)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (5,3)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (6,3)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (7,3)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (8,3)
+Residents:    []
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (9,3)
 Residents:    []
-Resident IDs: None
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (0,4)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (1,4)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (2,4)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (3,4)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (4,4)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (5,4)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (6,4)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (7,4)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (8,4)
+Residents:    []
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (9,4)
 Residents:    []
-Resident IDs: None
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (0,5)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (1,5)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (2,5)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (3,5)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (4,5)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (5,5)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (6,5)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (7,5)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (8,5)
+Residents:    []
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (9,5)
 Residents:    []
-Resident IDs: None
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (0,6)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (1,6)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (2,6)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (3,6)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (4,6)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (5,6)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (6,6)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (7,6)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (8,6)
+Residents:    []
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (9,6)
 Residents:    []
-Resident IDs: None
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (0,7)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (1,7)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (2,7)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (3,7)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (4,7)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (5,7)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (6,7)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (7,7)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (8,7)
+Residents:    []
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (9,7)
 Residents:    []
-Resident IDs: None
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (0,8)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (1,8)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (2,8)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (3,8)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (4,8)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (5,8)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (6,8)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (7,8)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (8,8)
+Residents:    []
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (9,8)
 Residents:    []
-Resident IDs: None
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (0,9)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (1,9)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (2,9)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (3,9)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (4,9)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (5,9)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (6,9)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (7,9)
+Residents:    []
+Resident IDs: []
+Food:         0
+Water:        0
+Temperature:  0
+
+Position:     (8,9)
+Residents:    []
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0
 
 Position:     (9,9)
 Residents:    []
-Resident IDs: None
+Resident IDs: []
 Food:         0
 Water:        0
 Temperature:  0

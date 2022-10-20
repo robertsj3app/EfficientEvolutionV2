@@ -3,14 +3,17 @@ import random
 from Tile import Tile
 from Individual import Individual
 from Individual import Genome
+from GUI import GUI
+import time
 
 class Environment(object):
     def __init__(self):
         self.x = 10
         self.y = 10
-        self.grid = [[Tile() for i in range(self.x)] for ii in range(self.y)]
+        self.grid = [[Tile((i, ii)) for i in range(self.x)] for ii in range(self.y)]
         self.appearance = open(r"./Appearance.txt", "w")
         self.individuals = []
+        #self.label()
 
     def pass_time(self):
         for item in self.individuals():
@@ -116,37 +119,42 @@ class Environment(object):
 
     def print_attributes_to_file(self):
         for row in range(self.x):
-            i = 0
-            for item in self.grid[row]:
-                self.appearance.write("Position:     (" + str(row) + "," + str(i) + ")")
-                self.appearance.write("\nResidents:    " + str(item.individuals))
-                self.appearance.write("\nResident IDs: " + str(item.get_ids()))
-                self.appearance.write("\nFood:         " + str(item.food))
-                self.appearance.write("\nWater:        " + str(item.water))
-                self.appearance.write("\nTemperature:  " + str(item.temperature))
+            for col in range(self.y):
+                self.appearance.write("Position:     (" + str(self.grid[row][col].position[0]) + "," + str(self.grid[row][col].position[1]) + ")")
+                self.appearance.write("\nResidents:    " + str(self.grid[row][col].individuals))
+                self.appearance.write("\nResident IDs: " + str(self.grid[row][col].get_ids()))
+                self.appearance.write("\nFood:         " + str(self.grid[row][col].food))
+                self.appearance.write("\nWater:        " + str(self.grid[row][col].water))
+                self.appearance.write("\nTemperature:  " + str(self.grid[row][col].temperature))
                 self.appearance.write("\n\n")
-                i += 1
         self.appearance.write("\n\n")
+        self.appearance.close()
+        print('hi')
 
 
 env = Environment()
+gui = GUI(env)
 traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
 ind = Individual(Genome(traits))
+
 env.insert_one_creature(ind, (0,0))
-print(type(ind.genome.genome.keys()))
+gui.make_grid()
+#gui.mainloop()
 ks = ind.genome.genome.keys()
-print(f"KEYS: {list(ks)[0]}")
-env.print_grid()
-env.print_attributes_to_file()
+#env.print_attributes_to_file()
 env.get_tiles_around((0,0), 2)
 
 env.move_one_individual(env.get_tile((0,0)).individuals[0], env.get_tile_towards_tile((0,0), (1,0)))
+env.insert_one_creature(ind, (2, 2))
 
+time.sleep(1)
+
+gui.make_grid()
+
+
+print('meh')
 env.print_attributes_to_file()
-
-print(env.get_tile((1,0)).individuals[0].position)
-env.print_grid()
-
+gui.mainloop()
 #if gene is movement decider
 ##    for loop to go through all those genes
 #     each gene is going to add favorability to each tile
