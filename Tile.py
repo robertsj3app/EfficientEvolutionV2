@@ -1,10 +1,6 @@
 class Tile:
     def __init__(self, pos):
-        self.attributes = ["Food", "Temperature", "Water"]
-        self.weights = [0, 0, 0]
-        self.food = 0
-        self.temperature = 0
-        self.water = 0
+        self.attributes = {"Food": 0, "Temperature": 0, "Water": 0}
         self.individuals = []
         self.position = pos
 
@@ -29,8 +25,8 @@ class Tile:
     def get_description(self):
         str = ""
         str = str + f"Position: {self.position[0]} , {self.position[1]}\n"
-        for i in range(len(self.attributes)):
-            str = str + f"{self.attributes[i]}: {self.weights[i]}\n"
+        for key in self.attributes:
+            str = str + f"{key}: {self.attributes[key]}\n"
         str = str + "\nInhabitants:\n"
         for item in self.individuals:
             str = str + f'{item.id}'
