@@ -57,17 +57,18 @@ class Individual:
         self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
         Individual.ids.append(self.id)
         self.position = (-1, -1)
+        self.sight_range = 1
 
     def reproduce(self: Self, other: Individual):
         offspring_genome = Genome.mutate(Genome.crossover(self.genome, other.genome))
         offspring = Individual(offspring_genome)
         return offspring
 
-traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
-test1 = Individual(Genome(traits))
-test2 = Individual(Genome(traits))
-test1.genome.display()
-test2.genome.display()
-off1 = test1.reproduce(test2)
-off1.genome.display()
-print(Individual.ids)
+#traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
+#test1 = Individual(Genome(traits))
+#test2 = Individual(Genome(traits))
+#test1.genome.display()
+#test2.genome.display()
+#off1 = test1.reproduce(test2)
+#off1.genome.display()
+#print(Individual.ids)
