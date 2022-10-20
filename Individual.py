@@ -1,14 +1,14 @@
 from __future__ import annotations
 import random
 import sys
-from turtle import shape
 from typing_extensions import Self
-from matplotlib.pyplot import rc
 from numpy import random
 import numpy as np
+from Tile import Tile
 
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
 
 from keras.models import Sequential
 from keras.layers import Input, Dense
@@ -16,14 +16,17 @@ from math import prod
 
 class Brain:
 
-    def __init__(self: Self):
-        self.network = Sequential()
-        self.network.add(Input(8))
-        self.network.add(Dense(7, activation='relu'))
-        self.network.add(Dense(15, activation='relu'))
-        self.network.add(Dense(8, activation='sigmoid'))
+    def __init__(self: Self, genome: BrainGenome = None) -> Brain:
+        self.network = Sequential() # Need to change this later to dynamically pull number of traits from each tile in sight range
+        self.network.add(Input(4)) # len(Tile.attributes.keys)
+        self.network.add(Dense(4, activation='relu'))
+        self.network.add(Dense(4, activation='relu'))
+        self.network.add(Dense(1, activation='linear'))
 
-    def to_genome(self: Self):
+        if(genome != None):
+            self.network.set_weights(genome.to_weights())
+
+    def to_genome(self: Self) -> BrainGenome:
         shapes = []
         genome = []
         for l in self.network.get_weights():
@@ -32,12 +35,20 @@ class Brain:
         
         return BrainGenome(genome, shapes)
 
+    def getPreferredTile(self: Self, tiles: list[Tile], show_outputs = False) -> int:
+        inputs = [[t.food, t.temperature, t.water, len(t.individuals)] for t in tiles]
+        outputs = list(self.network.predict(inputs).flatten())
+        if(show_outputs == True):
+            print(outputs)
+            
+        return tiles[outputs.index(max(outputs))].position
+
 class BrainGenome:
-    def __init__(self: Self, weights: list, shapes: list):
+    def __init__(self: Self, weights: list, shapes: list) -> BrainGenome:
         self.genome = weights
         self.shapes = shapes
 
-    def crossover(genome1: BrainGenome, genome2: BrainGenome):
+    def crossover(genome1: BrainGenome, genome2: BrainGenome) -> BrainGenome:
         genome01 = genome1.genome
         genome02 = genome2.genome
         if(genome1.shapes != genome2.shapes):
@@ -50,7 +61,7 @@ class BrainGenome:
                 new_genome.append(genome02[i])
         return BrainGenome(new_genome, genome1.shapes)
 
-    def to_weights(self: Self):
+    def to_weights(self: Self) -> list[float]:
         layer_weights = []
         genome = self.genome
         for w in self.shapes:
@@ -60,18 +71,16 @@ class BrainGenome:
             
         return layer_weights
 
-    # def mutate(genome: Genome, mutation_rate: float = None, mutation_amount: float = 0.33):
-    #     genome = genome.genome
-    #     if(mutation_rate == None):
-    #         mutation_rate = 1 / len(genome)
-    #     for t in genome:
-    #         if(random.random() <= mutation_rate):
-    #             genome[t] = genome[t] + random.normal(genome[t], mutation_amount) if random.random() <= 0.5 else genome[t] - random.normal(genome[t], mutation_amount)
-    #             #if(genome[t] < 0):
-    #             #    genome[t] = 0
-    #             #elif(genome[t] > 1):
-    #             #    genome[t] = 1
-    #     return Genome(genome)
+    def mutate(genome: BrainGenome, mutation_rate: float = None, mutation_amount: float = 0.33) -> BrainGenome:
+        if(mutation_rate == None):
+            mutation_rate = 1 / len(genome.genome)
+        new_genome = []
+        for t in genome.genome:
+            if(random.random() <= mutation_rate):
+                new_genome.append(t + random.normal(t, mutation_amount) if random.random() <= 0.5 else t - random.normal(t, mutation_amount))
+            else:
+                new_genome.append(t)
+        return BrainGenome(new_genome, genome.shapes)
 
 
     def display(self: Self):
@@ -80,7 +89,7 @@ class BrainGenome:
 
 class TraitGenome:
 
-    def __init__(self: Self, traits: list|dict):
+    def __init__(self: Self, traits: list|dict) -> TraitGenome:
         self.genome = {}
         self.shape = ()
         if(type(traits) == list):
@@ -90,7 +99,7 @@ class TraitGenome:
             for t in traits:
                 self.genome[t] = traits[t]
 
-    def crossover(genome1: TraitGenome, genome2: TraitGenome):
+    def crossover(genome1: TraitGenome, genome2: TraitGenome) -> TraitGenome:
         genome1 = genome1.genome
         genome2 = genome2.genome
         if(genome1.keys() != genome2.keys()):
@@ -103,10 +112,10 @@ class TraitGenome:
                 new_genome[t] = genome2[t]
         return TraitGenome(new_genome)        
 
-    def mutate(genome: TraitGenome, mutation_rate: float = None, mutation_amount: float = 0.33):
-        genome = genome.genome
+    def mutate(genome: TraitGenome, mutation_rate: float = None, mutation_amount: float = 0.33) -> TraitGenome:
+        genome = genome.genome.copy()
         if(mutation_rate == None):
-            mutation_rate = 1 / len(genome)
+            mutation_rate = 1 / len(genome.genome)
         for t in genome:
             if(random.random() <= mutation_rate):
                 genome[t] = genome[t] + random.normal(genome[t], mutation_amount) if random.random() <= 0.5 else genome[t] - random.normal(genome[t], mutation_amount)
@@ -128,32 +137,32 @@ class Individual:
         if(genome == {}):
             sys.exit("Cannot create individual with empty genome!")
         self.genome = genome
-        self.brain = Brain()
-        if(bgenome != None):
-            self.brain.network.set_weights(bgenome.to_weights())
+        self.brain = Brain(bgenome)
         self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
         Individual.ids.append(self.id)
-        self.position = (-1, -1)
 
-    def reproduce(self: Self, other: Individual):
+    def reproduce(self: Self, other: Individual) -> Individual:
         offspring_genome = TraitGenome.mutate(TraitGenome.crossover(self.genome, other.genome))
-        offspring = Individual(offspring_genome)
+        offspring_brain_genome = BrainGenome.mutate(BrainGenome.crossover(self.brain.to_genome(), other.brain.to_genome()))
+        offspring = Individual(offspring_genome, offspring_brain_genome)
         return offspring
 
-    def get_id(self: Self):
+    def get_id(self: Self) -> int:
         return self.id
 
 b1 = Brain()
 b2 = Brain()
-bg1 = b1.to_genome()
-bg2 = b2.to_genome()
-bgo = BrainGenome.crossover(bg1, bg2)
-
-with(open("bg1.txt", "w+")) as w:
-    print(bg1.genome, file=w)
-
-with(open("bg2.txt", "w+")) as g:
-    print(bg2.genome, file=g)
-
-with(open("bgo.txt", "w+")) as rw:
-    print(bgo.genome, file=rw)
+b3 = Brain(BrainGenome.mutate(BrainGenome.crossover(b1.to_genome(), b2.to_genome())))
+tiles = [Tile(), Tile(), Tile()]
+tiles[0].water = 3
+tiles[0].position = (1,0)
+tiles[1].food = 4
+tiles[1].position = (2,0)
+tiles[2].individuals = [0,0,0,0,0]
+tiles[2].position = (3,0)
+outputs = b1.getPreferredTile(tiles, show_outputs=True)
+print(outputs)
+outputs = b2.getPreferredTile(tiles, show_outputs=True)
+print(outputs)
+outputs = b3.getPreferredTile(tiles, show_outputs=True)
+print(outputs)
