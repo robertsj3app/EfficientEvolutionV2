@@ -36,7 +36,7 @@ class Brain:
         
         return BrainGenome(genome, shapes)
 
-    def getPreferredTile(self: Self, tiles: list[Tile], show_outputs = False) -> int:
+    def getPreferredTile(self: Self, tiles: list[Tile], show_outputs: bool = False) -> tuple[int]:
         inputs = [[t.attributes["Food"], t.attributes["Temperature"], t.attributes["Water"]] for t in tiles]
         outputs = list(self.network.predict(inputs).flatten())
         if(show_outputs == True):
@@ -134,14 +134,22 @@ class TraitGenome:
 class Individual:
     ids: list = []
 
-    def __init__(self: Self, genome: TraitGenome, bgenome: BrainGenome = None):
+    def __init__(self: Self, genome: TraitGenome, bgenome: BrainGenome = None) -> Individual:
         if(genome == {}):
             sys.exit("Cannot create individual with empty genome!")
         self.genome = genome
         self.brain = Brain(bgenome)
         self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
         self.position = (-1,-1)
+        self.timeToLive = 10
         Individual.ids.append(self.id)
+
+    def getPreferredTile(self: Self, tiles: list[Tile]) -> tuple[int]:
+        return self.brain.getPreferredTile()
+
+    def eat(self: Self, tile: Tile) -> None:
+        self.timeToLive += 5
+        tile.attributes['Food'] -= 1
 
     def reproduce(self: Self, other: Individual) -> Individual:
         offspring_genome = TraitGenome.mutate(TraitGenome.crossover(self.genome, other.genome))
