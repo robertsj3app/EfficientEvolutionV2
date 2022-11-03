@@ -18,8 +18,8 @@ class Brain:
 
     def __init__(self: Self, genome: BrainGenome = None) -> Brain:
         t = Tile((-1, -1))
-        self.network = Sequential() # Need to change this later to dynamically pull number of traits from each tile in sight range
-        self.network.add(Input(len(t.attributes.keys()))) # len(Tile.attributes.keys)
+        self.network = Sequential()
+        self.network.add(Input(len(t.attributes.keys())))
         self.network.add(Dense(4, activation='relu'))
         self.network.add(Dense(4, activation='relu'))
         self.network.add(Dense(1, activation='linear'))
@@ -83,10 +83,8 @@ class BrainGenome:
                 new_genome.append(t)
         return BrainGenome(new_genome, genome.shapes)
 
-
     def display(self: Self):
          print(self.genome + "\n" + self.shapes)
-
 
 class TraitGenome:
 
@@ -126,10 +124,8 @@ class TraitGenome:
                     genome[t] = 1
         return TraitGenome(genome)
 
-
     def display(self: Self):
         print(self.genome)        
-
 
 class Individual:
     ids: list = []
@@ -145,7 +141,7 @@ class Individual:
         Individual.ids.append(self.id)
 
     def getPreferredTile(self: Self, tiles: list[Tile]) -> tuple[int]:
-        return self.brain.getPreferredTile()
+        return self.brain.getPreferredTile(tiles)
 
     def eat(self: Self, tile: Tile) -> None:
         self.timeToLive += 5
