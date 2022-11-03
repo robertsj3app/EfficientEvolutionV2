@@ -145,7 +145,7 @@ class Individual:
         Individual.ids.append(self.id)
 
     def getPreferredTile(self: Self, tiles: list[Tile]) -> tuple[int]:
-        return self.brain.getPreferredTile()
+        return self.brain.getPreferredTile(tiles)
 
     def eat(self: Self, tile: Tile) -> None:
         self.timeToLive += 5

@@ -20,6 +20,11 @@ class GUI(object):
         self.tile_description = tkinter.Label(self.separator, text="")
         self.tile_description.pack()
         self.last_used_button = 0
+        self.pass_time_button = tkinter.Button(self.master, height=2, width=4,
+                                        text="PASS TIME",
+                                        highlightthickness = 0, bd=0, bg='white',
+                                        command=lambda : self.pass_time())
+        self.pass_time_button.place(x=20, y=1)
 
 
     def make_grid(self):
@@ -52,13 +57,18 @@ class GUI(object):
         self.last_used_button = x*len(self.env.grid)+y
         self.buttons[x*len(self.env.grid)+y].config(bg='green')
         self.master.update()
-        self.tile_description.configure(text=self.env.grid[x][y].get_description())
+        self.tile_description.configure(text=f'{self.env.grid[x][y].get_description()}\n{self.env.last_wanted_tile}')
 
     def update_grid(self):
         self.buttons[self.last_used_button].config(bg='white')
         for row in range(len(self.env.grid)):
             for col in range(len(self.env.grid[0])):
                 self.buttons[row * len(self.env.grid) + col].config(text=self.env.grid[row][col].get_num_individuals())
+        self.master.update()
+
+    def pass_time(self):
+        self.env.pass_time()
+        self.update_grid()
 
     def mainloop(self):
         mainloop()
