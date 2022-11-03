@@ -2,23 +2,24 @@ import random
 
 from Tile import Tile
 from Individual import Individual
-from Individual import Genome
+from Individual import TraitGenome
 from GUI import GUI
 import time
 
 class Environment(object):
-    def __init__(self):
-        self.x = 10
-        self.y = 10
+    def __init__(self, width, height):
+        self.x = width
+        self.y = height
         self.grid = [[Tile((i, ii)) for i in range(self.x)] for ii in range(self.y)]
         self.appearance = open(r"./Appearance.txt", "w")
         self.individuals = []
         #self.label()
 
-    def pass_time(self):
-        for item in self.individuals():
+    #def pass_time(self):
+        #for item in self.individuals():
+            #
             #uh, I'll make this look better later
-            self.move_one_individual(item, self.get_tile_towards_tile(self.get_favorable_tile(item, self.get_tiles_around(item.position, item.sight_range)).position))
+            #self.move_one_individual(item, self.get_tile_towards_tile(self.get_favorable_tile(item, self.get_tiles_around(item.position, item.sight_range)).position))
             #more code here to change the individual - death, aging, hungerizing, etc.
 
     def insert_species(self, ind, positions):
@@ -75,6 +76,8 @@ class Environment(object):
                     return old_pos
         return old_pos
 
+
+    #testing needed
     def get_tiles_around(self, position, sight_range):
         tiles = []
         for i in range(1 + (sight_range * 2)):
@@ -84,24 +87,6 @@ class Environment(object):
                     tiles.append((temp_tile, 0))
                 #print(str(position[0] - sight_range + i) + ", " + str(position[0] - sight_range + ii))
         return tiles
-
-    #ind = individual
-    #tiles = (Tile, int)
-    def get_favorable_tile(self, ind, tiles):
-        return ind.get_favorable_tile(tiles)
-#        temp_names = list(ind.genome.genome.keys())
-#        temp_genes = ind.genome.genome.keys()
-#        for i in range(ind.genome.genome.keys()):
-#            if "movement" in temp_names[i]:
-#                for tile in tiles:
-#                    if "water" in temp_names[i]:
-#                        if tile[0].get_water() >= 1:
-#                            tile[1] += temp_genes[i]
-#                    elif "social" in temp_names[i]:
-#                       if len(tile[0].get_individuals()) > 0:
-#                            tile[1] += temp_genes[i]
-                #here, consider making another class with the purpose of connecting genes to tile attributes
-#        return tiles
 
     def get_tile(self, position):
         if position[0] < 0 or position[0] >= self.x:
@@ -123,38 +108,10 @@ class Environment(object):
                 self.appearance.write("Position:     (" + str(self.grid[row][col].position[0]) + "," + str(self.grid[row][col].position[1]) + ")")
                 self.appearance.write("\nResidents:    " + str(self.grid[row][col].individuals))
                 self.appearance.write("\nResident IDs: " + str(self.grid[row][col].get_ids()))
-                self.appearance.write("\nFood:         " + str(self.grid[row][col].food))
-                self.appearance.write("\nWater:        " + str(self.grid[row][col].water))
-                self.appearance.write("\nTemperature:  " + str(self.grid[row][col].temperature))
+                for key in self.grid[0][0].attributes:
+                    self.appearance.write(f"{key}: {self.grid[row][col].attributes[key]}")
                 self.appearance.write("\n\n")
         self.appearance.write("\n\n")
         self.appearance.close()
         print('hi')
 
-
-env = Environment()
-gui = GUI(env)
-traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
-ind = Individual(Genome(traits))
-
-env.insert_one_creature(ind, (0,0))
-gui.make_grid()
-#gui.mainloop()
-ks = ind.genome.genome.keys()
-#env.print_attributes_to_file()
-env.get_tiles_around((0,0), 2)
-
-env.move_one_individual(env.get_tile((0,0)).individuals[0], env.get_tile_towards_tile((0,0), (1,0)))
-env.insert_one_creature(ind, (2, 2))
-
-time.sleep(1)
-
-gui.make_grid()
-
-
-print('meh')
-env.print_attributes_to_file()
-gui.mainloop()
-#if gene is movement decider
-##    for loop to go through all those genes
-#     each gene is going to add favorability to each tile

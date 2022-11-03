@@ -19,6 +19,7 @@ class GUI(object):
         #self.tile_position_label.pack()
         self.tile_description = tkinter.Label(self.separator, text="")
         self.tile_description.pack()
+        self.last_used_button = 0
 
 
     def make_grid(self):
@@ -27,7 +28,7 @@ class GUI(object):
         num_rows = len(self.env.grid)
         num_cols = len(self.env.grid[0])
         x_size = 33
-        y_size = 37
+        y_size = 36
         self.master.attributes('-fullscreen', True)
         self.canvas.pack()
 
@@ -35,7 +36,7 @@ class GUI(object):
             for col in range(1, num_cols + 1):
                 self.buttons.append(tkinter.Button(self.master, height=2, width=4,
                                         text=self.env.grid[row-1][col-1].get_num_individuals(),
-                                        highlightthickness = 0, bd=0, bg='green',
+                                        highlightthickness = 0, bd=0, bg='white',
                                         command=lambda row=row,col=col: self.examine_tile(row-1, col-1)))
                 self.buttons[-1].pack()
                 #self.buttons[row-1][col-1].pack(pady=10)
@@ -47,22 +48,17 @@ class GUI(object):
         self.master.update()
 
     def examine_tile(self, x, y):
-        #self.buttons[x*len(self.env.grid)+y].flash()
-
-        self.buttons[x*len(self.env.grid)+y].config(text='hi')
-        self.buttons[x*len(self.env.grid)+y].config(bg='black')
-        #self.buttons[x*len(self.env.grid)+y].config(bg='dark green', fg='white')
-
-        self.buttons[x * len(self.env.grid) + y]['text'] = 'hi'
+        self.buttons[self.last_used_button].config(bg='white')
+        self.last_used_button = x*len(self.env.grid)+y
+        self.buttons[x*len(self.env.grid)+y].config(bg='green')
         self.master.update()
-
-        #self.buttons[x][y].pack()
-        #self.buttons[x][y].config(text="hi")
-        #self.buttons[x][y].flash()
-        #self.tile_position_label.configure(text=f'Position: {x}, {y}')
         self.tile_description.configure(text=self.env.grid[x][y].get_description())
-        print(self.env.grid[x][y].get_description())
 
+    def update_grid(self):
+        self.buttons[self.last_used_button].config(bg='white')
+        for row in range(len(self.env.grid)):
+            for col in range(len(self.env.grid[0])):
+                self.buttons[row * len(self.env.grid) + col].config(text=self.env.grid[row][col].get_num_individuals())
 
     def mainloop(self):
         mainloop()

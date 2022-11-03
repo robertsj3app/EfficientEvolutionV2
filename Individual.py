@@ -17,8 +17,9 @@ from math import prod
 class Brain:
 
     def __init__(self: Self, genome: BrainGenome = None) -> Brain:
+        t = Tile((-1, -1))
         self.network = Sequential() # Need to change this later to dynamically pull number of traits from each tile in sight range
-        self.network.add(Input(4)) # len(Tile.attributes.keys)
+        self.network.add(Input(len(t.attributes.keys()))) # len(Tile.attributes.keys)
         self.network.add(Dense(4, activation='relu'))
         self.network.add(Dense(4, activation='relu'))
         self.network.add(Dense(1, activation='linear'))
@@ -36,7 +37,7 @@ class Brain:
         return BrainGenome(genome, shapes)
 
     def getPreferredTile(self: Self, tiles: list[Tile], show_outputs = False) -> int:
-        inputs = [[t.food, t.temperature, t.water, len(t.individuals)] for t in tiles]
+        inputs = [[t.attributes["Food"], t.attributes["Temperature"], t.attributes["Water"]] for t in tiles]
         outputs = list(self.network.predict(inputs).flatten())
         if(show_outputs == True):
             print(outputs)
@@ -139,6 +140,7 @@ class Individual:
         self.genome = genome
         self.brain = Brain(bgenome)
         self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
+        self.position = (-1,-1)
         Individual.ids.append(self.id)
 
     def reproduce(self: Self, other: Individual) -> Individual:
@@ -149,20 +151,3 @@ class Individual:
 
     def get_id(self: Self) -> int:
         return self.id
-
-b1 = Brain()
-b2 = Brain()
-b3 = Brain(BrainGenome.mutate(BrainGenome.crossover(b1.to_genome(), b2.to_genome())))
-tiles = [Tile(), Tile(), Tile()]
-tiles[0].water = 3
-tiles[0].position = (1,0)
-tiles[1].food = 4
-tiles[1].position = (2,0)
-tiles[2].individuals = [0,0,0,0,0]
-tiles[2].position = (3,0)
-outputs = b1.getPreferredTile(tiles, show_outputs=True)
-print(outputs)
-outputs = b2.getPreferredTile(tiles, show_outputs=True)
-print(outputs)
-outputs = b3.getPreferredTile(tiles, show_outputs=True)
-print(outputs)
