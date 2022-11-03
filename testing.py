@@ -46,16 +46,17 @@ import time
 #env.print_attributes_to_file()
 #gui.mainloop()
 
-env = Environment(8, 8)
+traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
+ind = Individual(TraitGenome(traits))
+
+env = Environment(5,5)
+
+i = 0
+for row in env.grid:
+    for item in row:
+        item.attributes['Food'] = i
+        i += 1
 gui = GUI(env)
-traits = ['sociability', 'heat-favorability']
-ind0 = Individual(TraitGenome(traits))
-ind1 = Individual(TraitGenome(traits))
-ind2 = Individual(TraitGenome(traits))
-env.insert_one_creature(ind0, (0, 0))
-env.insert_one_creature(ind1, (0, 1))
-env.insert_one_creature(ind2, (0, 2))
+env.insert_one_creature(ind, (0,0))
 gui.make_grid()
-env.move_one_individual(ind0, (3, 3))
-gui.update_grid()
 gui.mainloop()

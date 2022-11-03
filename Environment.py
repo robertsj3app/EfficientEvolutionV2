@@ -11,16 +11,40 @@ class Environment(object):
         self.x = width
         self.y = height
         self.grid = [[Tile((i, ii)) for i in range(self.x)] for ii in range(self.y)]
+        self.history = []
         self.appearance = open(r"./Appearance.txt", "w")
         self.individuals = []
+        self.turn = 0
+        self.last_wanted_tile = (-1,-1)
         #self.label()
 
-    #def pass_time(self):
-        #for item in self.individuals():
-            #
-            #uh, I'll make this look better later
-            #self.move_one_individual(item, self.get_tile_towards_tile(self.get_favorable_tile(item, self.get_tiles_around(item.position, item.sight_range)).position))
-            #more code here to change the individual - death, aging, hungerizing, etc.
+    def pass_time(self):
+        #if self.turn < len(self.history):
+        #    self.grid = self.history[self.turn + 1]
+        #    self.turn += 1
+        for item in self.individuals:
+            item.timeToLive -= 1
+            if item.timeToLive == 0:
+                self.remove_individual(item)
+                self.individuals.remove(item)
+                continue
+            sight_range = 1
+            surrounding_tiles = self.get_tiles_around(item.position, sight_range)
+            preferred_position = item.getPreferredTile(surrounding_tiles)
+            # possible for loop for below line if giving a movement speed
+            position_in_range = self.get_tile_towards_tile(item.position, preferred_position)
+            tile_in_range = self.grid[position_in_range[0]][position_in_range[1]]
+            self.last_wanted_tile = preferred_position
+            self.move_one_individual(item, position_in_range)
+            if tile_in_range.attributes['Food'] > 0:
+                item.eat(tile_in_range)
+            self.turn += 1
+        self.history.append(self.grid)
+
+    def back_time(self):
+        if self.turn != 0:
+            self.grid = self.history[self.turn - 1]
+            self.turn -= 1
 
     def insert_species(self, ind, positions):
         for pos in positions:
@@ -28,7 +52,12 @@ class Environment(object):
 
     def insert_one_creature(self, ind, position):
         self.get_tile(position).insert_individual(ind)
+        self.individuals.append(ind)
         ind.position = position
+
+    def remove_individual(self, ind):
+        pos = ind.position
+        self.grid[pos[0]][pos[1]].remove_individual(ind)
 
     def move_one_individual(self, ind, new_pos):
         self.get_tile(new_pos).insert_individual(ind)
@@ -84,7 +113,7 @@ class Environment(object):
             for ii in range(1 + (sight_range * 2)):
                 temp_tile = self.get_tile((position[0] - sight_range + i, position[0] - sight_range + ii))
                 if temp_tile is not None:
-                    tiles.append((temp_tile, 0))
+                    tiles.append(temp_tile)
                 #print(str(position[0] - sight_range + i) + ", " + str(position[0] - sight_range + ii))
         return tiles
 
