@@ -20,7 +20,7 @@ class GUI(object):
         self.tile_description = tkinter.Label(self.separator, text="")
         self.tile_description.pack()
         self.last_used_button = 0
-        self.pass_time_button = tkinter.Button(self.master, height=2, width=4,
+        self.pass_time_button = tkinter.Button(self.master, height=2, width=8,
                                         text="PASS TIME",
                                         highlightthickness = 0, bd=0, bg='white',
                                         command=lambda : self.pass_time())
