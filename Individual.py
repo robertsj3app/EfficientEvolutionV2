@@ -138,6 +138,7 @@ class Individual:
         self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
         self.position = (-1,-1)
         self.timeToLive = 10
+        self.score = 0
         Individual.ids.append(self.id)
 
     def getPreferredTile(self: Self, tiles: list[Tile]) -> tuple[int]:
@@ -155,3 +156,30 @@ class Individual:
 
     def get_id(self: Self) -> int:
         return self.id
+
+class Generation():
+
+    traits = ["Sight Range", "Metabolism", "Food Preference"]
+    
+    def __init__(self: Self, size: int = 10, individuals: list[Individual] = None):
+        self.living_individuals = []
+        self.dead_individuals = []
+        if(individuals != None):
+            self.living_individuals = individuals
+        for i in range(0, size - len(self.living_individuals)):
+            self.living_individuals.append(Individual(TraitGenome(Generation.traits)))
+
+    def get_best_scorers(self: Self, percent: float):
+        number = int(percent * len(self.dead_individuals))
+        sorteds = sorted(self.dead_individuals, key=lambda x: x.score, reverse=True)
+
+        best_scorers = sorteds[:number]
+        return best_scorers
+
+    def reproduce(self: Self, size: int, percent: float):
+        best_scorers = self.get_best_scorers(percent)
+        new_generation = []
+        for i in range(1,size):
+            new_generation.append(random.choice(best_scorers).reproduce(random.choice(best_scorers)))
+
+        return Generation(size=size, individuals=new_generation)
