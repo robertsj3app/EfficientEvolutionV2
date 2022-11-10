@@ -10,7 +10,7 @@ class Environment(object):
     def __init__(self, width, height):
         self.x = width
         self.y = height
-        self.grid = [[Tile((i, ii)) for i in range(self.x)] for ii in range(self.y)]
+        self.grid = [[Tile((i, ii)) for ii in range(self.y)] for i in range(self.x)]
         self.history = []
         self.appearance = open(r"./Appearance.txt", "w")
         self.individuals = []
@@ -32,10 +32,12 @@ class Environment(object):
             surrounding_tiles = self.get_tiles_around(item.position, sight_range)
             preferred_position = item.getPreferredTile(surrounding_tiles)
             # possible for loop for below line if giving a movement speed
+
             position_in_range = self.get_tile_towards_tile(item.position, preferred_position)
             tile_in_range = self.grid[position_in_range[0]][position_in_range[1]]
             self.last_wanted_tile = preferred_position
-            self.move_one_individual(item, position_in_range)
+            # self.move_one_individual(item, position_in_range)
+            self.move_one_individual(item, preferred_position)
             if tile_in_range.attributes['Food'] > 0:
                 item.eat(tile_in_range)
             self.turn += 1
@@ -111,10 +113,12 @@ class Environment(object):
         tiles = []
         for i in range(1 + (sight_range * 2)):
             for ii in range(1 + (sight_range * 2)):
-                temp_tile = self.get_tile((position[0] - sight_range + i, position[0] - sight_range + ii))
+                temp_tile = self.get_tile((position[0] - sight_range + i, position[1] - sight_range + ii))
                 if temp_tile is not None:
                     tiles.append(temp_tile)
                 #print(str(position[0] - sight_range + i) + ", " + str(position[0] - sight_range + ii))
+        for i in range(len(tiles)):
+            print(f'({tiles[i].position[0]},{tiles[i].position[1]})')
         return tiles
 
     def get_tile(self, position):

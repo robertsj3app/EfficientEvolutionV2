@@ -37,27 +37,27 @@ class GUI(object):
         self.master.attributes('-fullscreen', True)
         self.canvas.pack()
 
-        for row in range(1, num_rows + 1):
-            for col in range(1, num_cols + 1):
+        for col in range(1, num_cols + 1):
+            for row in range(1, num_rows + 1):
                 self.buttons.append(tkinter.Button(self.master, height=2, width=4,
                                         text=self.env.grid[row-1][col-1].get_num_individuals(),
                                         highlightthickness = 0, bd=0, bg='white',
                                         command=lambda row=row,col=col: self.examine_tile(row-1, col-1)))
                 self.buttons[-1].pack()
                 #self.buttons[row-1][col-1].pack(pady=10)
-                rect = self.canvas.create_rectangle(col * x_size, row * y_size,
-                                               (col+1) * x_size, (row+1) * y_size,
+                rect = self.canvas.create_rectangle(row * x_size, col * y_size,
+                                               (row+1) * x_size, (col+1) * y_size,
                                                 fill = '#ccc')
-                self.buttons[-1].place(x=col * x_size + 1, y=row * y_size + 1)
+                self.buttons[-1].place(x=row * x_size + 1, y=col * y_size + 1)
 
         self.master.update()
 
     def examine_tile(self, x, y):
         self.buttons[self.last_used_button].config(bg='white')
-        self.last_used_button = x*len(self.env.grid)+y
-        self.buttons[x*len(self.env.grid)+y].config(bg='green')
+        self.last_used_button = y*len(self.env.grid)+x
+        self.buttons[y*len(self.env.grid)+x].config(bg='green')
         self.master.update()
-        self.tile_description.configure(text=f'{self.env.grid[x][y].get_description()}\n{self.env.last_wanted_tile}')
+        self.tile_description.configure(text=f'{self.env.grid[x][y].get_description()}\n{self.env.last_wanted_tile}\n{len(self.env.grid)}, {len(self.env.grid[0])}')
 
     def update_grid(self):
         self.buttons[self.last_used_button].config(bg='white')
