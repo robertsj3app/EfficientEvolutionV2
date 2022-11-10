@@ -23,41 +23,35 @@ class Environment(object):
         #    self.grid = self.history[self.turn + 1]
         #    self.turn += 1
 
-        if len(self.individuals) == 0:
-            #for i in range(self.x):
-            #    for ii in range(self.y):
-            #        print(self.grid[i][ii].position)
-            print('\ntesting\n')
-            for item in self.individuals:
-                self.move_one_individual(item, (3, 4))
-                surrounding_tiles = self.get_tiles_around(item.position, 1)
-                for til in surrounding_tiles:
-                    print(til.position)
-                print()
-        else:
-            for item in self.individuals:
-                item.timeToLive -= 1
-                if item.timeToLive == 0:
-                    self.remove_individual(item)
-                    self.individuals.remove(item)
-                    continue
-                sight_range = 1
-                surrounding_tiles = self.get_tiles_around(item.position, sight_range)
-                print("")
-                for til in surrounding_tiles:
-                    print(til.position)
-                print("")
-                preferred_position = item.getPreferredTile(surrounding_tiles)
-                # possible for loop for below line if giving a movement speed
+        for item in self.individuals:
+            tile_list = []
+            item.timeToLive -= 1
+            if item.timeToLive == 0:
+                self.remove_individual(item)
+                self.individuals.remove(item)
+                continue
+            sight_range = 2
+            surrounding_tiles = self.get_tiles_around(item.position, sight_range)
+            print("")
+            for til in surrounding_tiles:
+                print(til.position)
+            print("")
+            preferred_position = item.getPreferredTile(surrounding_tiles)
+            # possible for loop for below line if giving a movement speed
 
-                position_in_range = self.get_tile_towards_tile(item.position, preferred_position)
-                tile_in_range = self.grid[position_in_range[0]][position_in_range[1]]
-                self.last_wanted_position = preferred_position
-                # self.move_one_individual(item, position_in_range)
-                self.move_one_individual(item, preferred_position)
-                if tile_in_range.attributes['Food'] > 0:
-                    item.eat(tile_in_range)
-                self.turn += 1
+            positions_in_range = self.get_tile_towards_tile(item.position, preferred_position)
+            if len(positions_in_range) == 1:
+                one_position_in_range = positions_in_range[0]
+            else:
+                for i in range(len(positions_in_range)):
+                    tile_list.append(self.get_tile(positions_in_range[i]))
+                one_position_in_range = item.getPreferredTile(tile_list)
+            tile_in_range = self.grid[one_position_in_range[0]][one_position_in_range[1]]
+            self.last_wanted_position = preferred_position
+            self.move_one_individual(item, one_position_in_range)
+            if tile_in_range.attributes['Food'] > 0:
+                item.eat(tile_in_range)
+            self.turn += 1
         self.history.append(self.grid)
 
     def back_time(self):
@@ -83,46 +77,48 @@ class Environment(object):
         self.get_tile(ind.position).remove_individual(ind)
         ind.position = new_pos
 
+    # returns an array of tiles. If length is one, creature moves there
+    # if length is two, creature must decide which tile to go to
     def get_tile_towards_tile(self, old_pos, new_pos):
         x_movement = new_pos[0] - old_pos[0]
         y_movement = new_pos[1] - old_pos[1]
+        tile_list = []
         if (x_movement == 0) and (y_movement == 0):
-            return old_pos
+            return [old_pos]
         if abs(x_movement) > abs(y_movement):
             if x_movement > 0:
-                return (old_pos[0]+1, old_pos[1])
+                return [(old_pos[0]+1, old_pos[1])]
             if x_movement < 0:
-                return (old_pos[0]-1, old_pos[1])
+                return [(old_pos[0]-1, old_pos[1])]
             if x_movement == 0:
                 print("UNEXPECTED RESULT IN GET_TILE_TOWARDS_TILE")
-                return old_pos
+                return [old_pos]
         if abs(x_movement) < abs(y_movement):
             if y_movement > 0:
-                return (old_pos[0], old_pos[1]+1)
+                return [(old_pos[0], old_pos[1]+1)]
             if y_movement < 0:
-                return (old_pos[0], old_pos[1]-1)
+                return [(old_pos[0], old_pos[1]-1)]
             if y_movement == 0:
                 print("UNEXPECTED RESULT IN GET_TILE_TOWARDS_TILE")
-                return old_pos
+                return [old_pos]
         if abs(x_movement) == abs(y_movement):
-            num = int(random.random() * 2)
-            if num == 0:
-                if x_movement > 0:
-                    return (old_pos[0]+1, old_pos[1])
-                if x_movement < 0:
-                    return (old_pos[0]-1, old_pos[1])
-                if x_movement == 0:
-                    print("UNEXPECTED RESULT IN GET_TILE_TOWARDS_TILE")
-                    return old_pos
-            if num == 1:
-                if y_movement > 0:
-                    return (old_pos[0], old_pos[1]+1)
-                if y_movement < 0:
-                    return (old_pos[0], old_pos[1]-1)
-                if y_movement == 0:
-                    print("UNEXPECTED RESULT IN GET_TILE_TOWARDS_TILE")
-                    return old_pos
-        return old_pos
+            # creature does not know to go vertical or horizontal
+            if x_movement > 0:
+                tile_list.append((old_pos[0]+1, old_pos[1]))
+            elif x_movement < 0:
+                tile_list.append((old_pos[0]-1, old_pos[1]))
+            else:
+                print("UNEXPECTED RESULT IN GET_TILE_TOWARDS_TILE")
+                return [old_pos]
+            if y_movement > 0:
+                tile_list.append((old_pos[0], old_pos[1]+1))
+            elif y_movement < 0:
+                tile_list.append((old_pos[0], old_pos[1]-1))
+            else:
+                print("UNEXPECTED RESULT IN GET_TILE_TOWARDS_TILE")
+                return [old_pos]
+            return tile_list
+        return [old_pos]
 
 
     #testing needed

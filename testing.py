@@ -58,6 +58,6 @@ for row in env.grid:
         i += 1
 gui = GUI(env)
 env.insert_one_creature(ind, (0,0))
-env.move_one_individual(ind, (3, 4))
+#env.move_one_individual(ind, (3, 4))
 gui.make_grid()
 gui.mainloop()
