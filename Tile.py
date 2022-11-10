@@ -24,7 +24,7 @@ class Tile:
 
     def get_description(self):
         str = ""
-        str = str + f"Position: {self.position[0]} , {self.position[1]}\n"
+        str = str + f"Position: {self.position}\n"
         for key in self.attributes:
             str = str + f"{key}: {self.attributes[key]}\n"
         str = str + "\nInhabitants:\n"

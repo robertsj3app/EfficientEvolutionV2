@@ -15,32 +15,49 @@ class Environment(object):
         self.appearance = open(r"./Appearance.txt", "w")
         self.individuals = []
         self.turn = 0
-        self.last_wanted_tile = (-1,-1)
+        self.last_wanted_position = (-1,-1)
         #self.label()
 
     def pass_time(self):
         #if self.turn < len(self.history):
         #    self.grid = self.history[self.turn + 1]
         #    self.turn += 1
-        for item in self.individuals:
-            item.timeToLive -= 1
-            if item.timeToLive == 0:
-                self.remove_individual(item)
-                self.individuals.remove(item)
-                continue
-            sight_range = 1
-            surrounding_tiles = self.get_tiles_around(item.position, sight_range)
-            preferred_position = item.getPreferredTile(surrounding_tiles)
-            # possible for loop for below line if giving a movement speed
 
-            position_in_range = self.get_tile_towards_tile(item.position, preferred_position)
-            tile_in_range = self.grid[position_in_range[0]][position_in_range[1]]
-            self.last_wanted_tile = preferred_position
-            # self.move_one_individual(item, position_in_range)
-            self.move_one_individual(item, preferred_position)
-            if tile_in_range.attributes['Food'] > 0:
-                item.eat(tile_in_range)
-            self.turn += 1
+        if len(self.individuals) == 0:
+            #for i in range(self.x):
+            #    for ii in range(self.y):
+            #        print(self.grid[i][ii].position)
+            print('\ntesting\n')
+            for item in self.individuals:
+                self.move_one_individual(item, (3, 4))
+                surrounding_tiles = self.get_tiles_around(item.position, 1)
+                for til in surrounding_tiles:
+                    print(til.position)
+                print()
+        else:
+            for item in self.individuals:
+                item.timeToLive -= 1
+                if item.timeToLive == 0:
+                    self.remove_individual(item)
+                    self.individuals.remove(item)
+                    continue
+                sight_range = 1
+                surrounding_tiles = self.get_tiles_around(item.position, sight_range)
+                print("")
+                for til in surrounding_tiles:
+                    print(til.position)
+                print("")
+                preferred_position = item.getPreferredTile(surrounding_tiles)
+                # possible for loop for below line if giving a movement speed
+
+                position_in_range = self.get_tile_towards_tile(item.position, preferred_position)
+                tile_in_range = self.grid[position_in_range[0]][position_in_range[1]]
+                self.last_wanted_position = preferred_position
+                # self.move_one_individual(item, position_in_range)
+                self.move_one_individual(item, preferred_position)
+                if tile_in_range.attributes['Food'] > 0:
+                    item.eat(tile_in_range)
+                self.turn += 1
         self.history.append(self.grid)
 
     def back_time(self):
@@ -117,8 +134,6 @@ class Environment(object):
                 if temp_tile is not None:
                     tiles.append(temp_tile)
                 #print(str(position[0] - sight_range + i) + ", " + str(position[0] - sight_range + ii))
-        for i in range(len(tiles)):
-            print(f'({tiles[i].position[0]},{tiles[i].position[1]})')
         return tiles
 
     def get_tile(self, position):
