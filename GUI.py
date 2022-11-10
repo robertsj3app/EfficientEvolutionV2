@@ -57,13 +57,16 @@ class GUI(object):
         self.last_used_button = y*len(self.env.grid)+x
         self.buttons[y*len(self.env.grid)+x].config(bg='green')
         self.master.update()
-        self.tile_description.configure(text=f'{self.env.grid[x][y].get_description()}\n{self.env.last_wanted_tile}\n{len(self.env.grid)}, {len(self.env.grid[0])}')
+        self.tile_description.configure(text=f'{self.env.grid[x][y].get_description()}\n{self.env.last_wanted_position}\n{len(self.env.grid)}, {len(self.env.grid[0])}')
 
     def update_grid(self):
         self.buttons[self.last_used_button].config(bg='white')
-        for row in range(len(self.env.grid)):
-            for col in range(len(self.env.grid[0])):
-                self.buttons[row * len(self.env.grid) + col].config(text=self.env.grid[row][col].get_num_individuals())
+        num_rows = len(self.env.grid)
+        num_cols = len(self.env.grid[0])
+        for col in range(num_cols):
+            for row in range(num_rows):
+                self.buttons[col * num_rows + row].config(text=self.env.grid[row][col].get_num_individuals())
+                #self.buttons[row * len(self.env.grid) + col].config(text=self.env.grid[row][col].get_num_individuals())
         self.master.update()
 
     def pass_time(self):

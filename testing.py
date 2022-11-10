@@ -49,7 +49,7 @@ import time
 traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
 ind = Individual(TraitGenome(traits))
 
-env = Environment(5,5)
+env = Environment(4,5)
 
 i = 0
 for row in env.grid:
@@ -58,5 +58,6 @@ for row in env.grid:
         i += 1
 gui = GUI(env)
 env.insert_one_creature(ind, (0,0))
+env.move_one_individual(ind, (3, 4))
 gui.make_grid()
 gui.mainloop()
