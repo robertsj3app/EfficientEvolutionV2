@@ -1,6 +1,8 @@
+import copy
+
 class Tile:
     def __init__(self, pos):
-        self.attributes = {"Food": 0, "Temperature": 0, "Water": 0}
+        self.attributes = {"Food": 0, "Hazard": 0, "Water": 0}
         self.individuals = []
         self.position = pos
 
@@ -33,6 +35,14 @@ class Tile:
             str = str + '\n'
         return str
 
+    def copy(self):
+        new_tile = Tile(self.position)
+        new_tile.attributes = copy.deepcopy(self.attributes)
+        new_inds = []
+        for ind in self.individuals:
+            new_inds.append(ind.copy())
+        new_tile.individuals = new_inds
+        return new_tile
 
 #modifiability
 #creature genome

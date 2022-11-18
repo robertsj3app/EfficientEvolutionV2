@@ -11,6 +11,7 @@ class Environment(object):
         self.x = width
         self.y = height
         self.grid = [[Tile((i, ii)) for ii in range(self.y)] for i in range(self.x)]
+        self.current_grid = []# used to remember the grid when going back in time
         self.history = []
         self.appearance = open(r"./Appearance.txt", "w")
         self.individuals = []
@@ -19,9 +20,16 @@ class Environment(object):
         #self.label()
 
     def pass_time(self):
-        #if self.turn < len(self.history):
-        #    self.grid = self.history[self.turn + 1]
-        #    self.turn += 1
+        if self.turn < len(self.history) - 1:
+            self.grid = self.history[self.turn + 1]
+            self.turn += 1
+            return
+        elif self.turn == len(self.history) - 1:
+            self.grid = self.current_grid
+            self.turn += 1
+            return
+
+        self.history.append([[self.grid[i][ii].copy() for ii in range(self.y)] for i in range(self.x)])
 
         for item in self.individuals:
             tile_list = []
@@ -32,10 +40,10 @@ class Environment(object):
                 continue
             sight_range = 2
             surrounding_tiles = self.get_tiles_around(item.position, sight_range)
-            print("")
-            for til in surrounding_tiles:
-                print(til.position)
-            print("")
+            #print("")
+            #for til in surrounding_tiles:
+            #    print(til.position)
+            #print("")
             preferred_position = item.getPreferredTile(surrounding_tiles)
             # possible for loop for below line if giving a movement speed
 
@@ -51,13 +59,16 @@ class Environment(object):
             self.move_one_individual(item, one_position_in_range)
             if tile_in_range.attributes['Food'] > 0:
                 item.eat(tile_in_range)
-            self.turn += 1
-        self.history.append(self.grid)
+        self.turn += 1
 
     def back_time(self):
-        if self.turn != 0:
-            self.grid = self.history[self.turn - 1]
-            self.turn -= 1
+        if self.turn == 0:
+            return
+        if self.turn == len(self.history):
+            self.current_grid = self.grid
+        print(len(self.history))
+        self.grid = self.history[self.turn - 1]
+        self.turn -= 1
 
     def insert_species(self, ind, positions):
         for pos in positions:

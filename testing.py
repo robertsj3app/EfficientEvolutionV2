@@ -47,7 +47,14 @@ import time
 #gui.mainloop()
 
 traits = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
+traits2 = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
+traits3 = ["Move Up", "Move Down", "Move Right", "Move Left", "Sight Range", "Metabolism", "Food Preference"]
 ind = Individual(TraitGenome(traits))
+ind2 = Individual(TraitGenome(traits2))
+ind3 = Individual(TraitGenome(traits3))
+til = Tile((7,8))
+
+ind1 = ind.copy()
 
 env = Environment(4,5)
 
@@ -58,6 +65,8 @@ for row in env.grid:
         i += 1
 gui = GUI(env)
 env.insert_one_creature(ind, (0,0))
-#env.move_one_individual(ind, (3, 4))
+env.move_one_individual(ind, (3, 4))
+env.insert_one_creature(ind2, (1, 1))
+env.insert_one_creature(ind3, (2, 1))
 gui.make_grid()
 gui.mainloop()

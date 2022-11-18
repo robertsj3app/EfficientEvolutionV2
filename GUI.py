@@ -24,8 +24,15 @@ class GUI(object):
                                         text="PASS TIME",
                                         highlightthickness = 0, bd=0, bg='white',
                                         command=lambda : self.pass_time())
-        self.pass_time_button.place(x=20, y=1)
-
+        self.pass_time_button.place(x=112, y=1)
+        self.back_time_button = tkinter.Button(self.master, height=2, width=8,
+                                        text="BACK TIME",
+                                        highlightthickness = 0, bd=0, bg='white',
+                                        command=lambda : self.back_time())
+        self.back_time_button.place(x=32, y=1)
+        self.turn_label = tkinter.Label(self.master, height=2,
+                                         text=f"TURN: {self.env.turn}")
+        self.turn_label.place(x=192, y=1)
 
     def make_grid(self):
         self.canvas.delete('all')
@@ -67,10 +74,15 @@ class GUI(object):
             for row in range(num_rows):
                 self.buttons[col * num_rows + row].config(text=self.env.grid[row][col].get_num_individuals())
                 #self.buttons[row * len(self.env.grid) + col].config(text=self.env.grid[row][col].get_num_individuals())
+        self.turn_label.config(text=f"TURN: {self.env.turn}")
         self.master.update()
 
     def pass_time(self):
         self.env.pass_time()
+        self.update_grid()
+
+    def back_time(self):
+        self.env.back_time()
         self.update_grid()
 
     def mainloop(self):

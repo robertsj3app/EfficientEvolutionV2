@@ -37,7 +37,7 @@ class Brain:
         return BrainGenome(genome, shapes)
 
     def getPreferredTile(self: Self, tiles: list[Tile], show_outputs: bool = False) -> tuple[int]:
-        inputs = [[t.attributes["Food"], t.attributes["Temperature"], t.attributes["Water"]] for t in tiles]
+        inputs = [[t.attributes["Food"], t.attributes["Hazard"], t.attributes["Water"]] for t in tiles]
         outputs = list(self.network.predict(inputs).flatten())
         if(show_outputs == True):
             print(outputs)
@@ -130,16 +130,22 @@ class TraitGenome:
 class Individual:
     ids: list = []
 
-    def __init__(self: Self, genome: TraitGenome, bgenome: BrainGenome = None) -> Individual:
-        if(genome == {}):
-            sys.exit("Cannot create individual with empty genome!")
-        self.genome = genome
-        self.brain = Brain(bgenome)
-        self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
-        self.position = (-1,-1)
-        self.timeToLive = 10
-        self.score = 0
-        Individual.ids.append(self.id)
+    def __init__(self: Self, genome: TraitGenome, bgenome: BrainGenome = None, copy: bool = False) -> Individual:
+        if not copy:
+            self.genome = genome
+            self.brain = Brain(bgenome)
+            self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
+            self.position = (-1,-1)
+            self.timeToLive = 10
+            self.score = 0
+            Individual.ids.append(self.id)
+        else: # shallow copy an individual
+            self.genome = None
+            self.brain = None
+            self.id = 0
+            self.position = (-1, -1)
+            self.timeToLive = 0
+            self.score = 0
 
     def getPreferredTile(self: Self, tiles: list[Tile]) -> tuple[int]:
         return self.brain.getPreferredTile(tiles)
@@ -156,6 +162,16 @@ class Individual:
 
     def get_id(self: Self) -> int:
         return self.id
+
+    def copy(self: Self) -> Individual:
+        new_individual = Individual(genome = None, bgenome = None, copy = True)
+        new_individual.genome = None
+        new_individual.brain = None
+        new_individual.id = self.id
+        new_individual.position = self.position
+        new_individual.timeToLive = self.timeToLive
+        new_individual.score = self.score
+        return new_individual
 
 class Generation():
 
