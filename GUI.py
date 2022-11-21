@@ -19,7 +19,8 @@ class GUI(object):
         #self.tile_position_label.pack()
         self.tile_description = tkinter.Label(self.separator, text="")
         self.tile_description.pack()
-        self.last_used_button = 0
+        self.last_used_button = -1
+        self.last_used_position = (-1,-1)
         self.pass_time_button = tkinter.Button(self.master, height=2, width=8,
                                         text="PASS TIME",
                                         highlightthickness = 0, bd=0, bg='white',
@@ -57,22 +58,47 @@ class GUI(object):
                                                 fill = '#ccc')
                 self.buttons[-1].place(x=row * x_size + 1, y=col * y_size + 1)
 
-        self.master.update()
+        self.update_grid()
 
     def examine_tile(self, x, y):
-        self.buttons[self.last_used_button].config(bg='white')
+        if self.last_used_button == -1:
+            pass
+        elif self.env.grid[self.last_used_position[0]][self.last_used_position[1]].attributes["Food"] > 0:
+            self.buttons[self.last_used_button].config(bg='green')
+        elif self.env.grid[self.last_used_position[0]][self.last_used_position[1]].attributes["Water"] > 0:
+            self.buttons[self.last_used_button].config(bg='blue')
+        elif self.env.grid[self.last_used_position[0]][self.last_used_position[1]].attributes["Hazard"] > 0:
+            self.buttons[self.last_used_button].config(bg='red')
+        else:
+            self.buttons[self.last_used_button].config(bg='white')
         self.last_used_button = y*len(self.env.grid)+x
-        self.buttons[y*len(self.env.grid)+x].config(bg='green')
+        self.last_used_position = (x, y)
+        self.buttons[y*len(self.env.grid)+x].config(bg='orange')
         self.master.update()
         self.tile_description.configure(text=f'{self.env.grid[x][y].get_description()}\n{self.env.last_wanted_position}\n{len(self.env.grid)}, {len(self.env.grid[0])}')
 
     def update_grid(self):
-        self.buttons[self.last_used_button].config(bg='white')
+        if self.env.grid[self.last_used_position[0]][self.last_used_position[1]].attributes["Food"] > 0:
+            self.buttons[self.last_used_button].config(bg='green')
+        elif self.env.grid[self.last_used_position[0]][self.last_used_position[1]].attributes["Water"] > 0:
+            self.buttons[self.last_used_button].config(bg='blue')
+        elif self.env.grid[self.last_used_position[0]][self.last_used_position[1]].attributes["Hazard"] > 0:
+            self.buttons[self.last_used_button].config(bg='red')
+        else:
+            self.buttons[self.last_used_button].config(bg='white')
         num_rows = len(self.env.grid)
         num_cols = len(self.env.grid[0])
         for col in range(num_cols):
             for row in range(num_rows):
                 self.buttons[col * num_rows + row].config(text=self.env.grid[row][col].get_num_individuals())
+                if self.env.grid[row][col].attributes["Food"] > 0:
+                    self.buttons[col * num_rows + row].config(bg='green')
+                elif self.env.grid[row][col].attributes["Water"] > 0:
+                    self.buttons[col * num_rows + row].config(bg='blue')
+                elif self.env.grid[row][col].attributes["Hazard"] > 0:
+                    self.buttons[col * num_rows + row].config(bg='red')
+                else:
+                    self.buttons[col * num_rows + row].config(bg='white')
                 #self.buttons[row * len(self.env.grid) + col].config(text=self.env.grid[row][col].get_num_individuals())
         self.turn_label.config(text=f"TURN: {self.env.turn}")
         self.master.update()

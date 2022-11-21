@@ -63,6 +63,13 @@ for row in env.grid:
     for item in row:
         item.attributes['Food'] = i
         i += 1
+
+env.grid[2][3].attributes['Food'] = 0
+env.grid[2][3].attributes['Hazard'] = 1
+
+env.grid[1][1].attributes['Food'] = 0
+env.grid[1][1].attributes['Water'] = 1
+
 gui = GUI(env)
 env.insert_one_creature(ind, (0,0))
 env.move_one_individual(ind, (3, 4))
