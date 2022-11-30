@@ -188,6 +188,7 @@ class Generation():
 
     def get_best_scorers(self: Self, percent: float, gendered: bool = False):
         number = int(percent * len(self.dead_individuals))
+        best_scorers = []
         if(gendered == False):
             sorteds = sorted(self.dead_individuals, key=lambda x: x.score, reverse=True)
             best_scorers = sorteds[:number]
