@@ -130,9 +130,10 @@ class TraitGenome:
 class Individual:
     ids: list = []
 
-    def __init__(self: Self, genome: TraitGenome, bgenome: BrainGenome = None, copy: bool = False) -> Individual:
+    def __init__(self: Self, genome: TraitGenome, bgenome: BrainGenome = None, copy: bool = False, gender: str = None,) -> Individual:
         if not copy:
             self.genome = genome
+            self.gender = gender
             self.brain = Brain(bgenome)
             self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
             self.position = (-1,-1)
@@ -185,17 +186,25 @@ class Generation():
         for i in range(0, size - len(self.living_individuals)):
             self.living_individuals.append(Individual(TraitGenome(Generation.traits)))
 
-    def get_best_scorers(self: Self, percent: float):
+    def get_best_scorers(self: Self, percent: float, gendered: bool = False):
         number = int(percent * len(self.dead_individuals))
-        sorteds = sorted(self.dead_individuals, key=lambda x: x.score, reverse=True)
-
-        best_scorers = sorteds[:number]
+        if(gendered == False):
+            sorteds = sorted(self.dead_individuals, key=lambda x: x.score, reverse=True)
+            best_scorers = sorteds[:number]
+        else:
+            sortedsMale = sorted([s for s in self.dead_individuals if s.gender == 'm'], key=lambda x: x.score, reverse=True)
+            sortedsFemale = sorted([s for s in self.dead_individuals if s.gender == 'f'], key=lambda x: x.score, reverse=True)
+            best_scorers = sortedsMale[:int(number / 2)] + sortedsFemale[:int(number / 2)]
+       
         return best_scorers
 
-    def reproduce(self: Self, size: int, percent: float):
-        best_scorers = self.get_best_scorers(percent)
+    def reproduce(self: Self, size: int, percent: float, gendered: bool = False):
+        best_scorers = self.get_best_scorers(percent, gendered)
         new_generation = []
         for i in range(1,size):
-            new_generation.append(random.choice(best_scorers).reproduce(random.choice(best_scorers)))
+            if(gendered == False):
+                new_generation.append(random.choice(best_scorers).reproduce(random.choice(best_scorers)))
+            else:
+                new_generation.append(random.choice([s for s in best_scorers if s.gender == 'm']).reproduce(random.choice([s for s in best_scorers if s.gender == 'f'])))
 
         return Generation(size=size, individuals=new_generation)
