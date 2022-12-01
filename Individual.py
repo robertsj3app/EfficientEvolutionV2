@@ -114,7 +114,7 @@ class TraitGenome:
     def mutate(genome: TraitGenome, mutation_rate: float = None, mutation_amount: float = 0.33) -> TraitGenome:
         genome = genome.genome.copy()
         if(mutation_rate == None):
-            mutation_rate = 1 / len(genome.genome)
+            mutation_rate = 1 / len(genome)
         for t in genome:
             if(random.random() <= mutation_rate):
                 genome[t] = genome[t] + random.normal(genome[t], mutation_amount) if random.random() <= 0.5 else genome[t] - random.normal(genome[t], mutation_amount)
