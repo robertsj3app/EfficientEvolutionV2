@@ -152,16 +152,16 @@ class GUI(object):
         for col in range(num_cols):
             for row in range(num_rows):
                 self.buttons[col * num_rows + row].config(text=self.env.grid[row][col].get_num_individuals())
-                self.buttons[self.last_used_button].config(bg='white')
-                if self.env.grid[self.last_used_position[0]][self.last_used_position[1]].attributes["Food"] > 0:
-                    self.buttons[self.last_used_button].config(bg='green')
-                if self.env.grid[self.last_used_position[0]][self.last_used_position[1]].attributes["Water"] > 0:
-                    if self.env.grid[self.last_used_position[0]][self.last_used_position[1]].attributes["Food"] > 0:
-                        self.buttons[self.last_used_button].config(bg='turquoise')
+                self.buttons[col * num_rows + row].config(bg='white')
+                if self.env.grid[row][col].attributes["Food"] > 0:
+                    self.buttons[col * num_rows + row].config(bg='green')
+                if self.env.grid[row][col].attributes["Water"] > 0:
+                    if self.env.grid[row][col].attributes["Food"] > 0:
+                        self.buttons[col * num_rows + row].config(bg='turquoise')
                     else:
-                        self.buttons[self.last_used_button].config(bg='blue')
-                if self.env.grid[self.last_used_position[0]][self.last_used_position[1]].attributes["Hazard"] > 0:
-                    self.buttons[self.last_used_button].config(bg='red')
+                        self.buttons[col * num_rows + row].config(bg='blue')
+                if self.env.grid[row][col].attributes["Hazard"] > 0:
+                    self.buttons[col * num_rows + row].config(bg='red')
                 #self.buttons[row * len(self.env.grid) + col].config(text=self.env.grid[row][col].get_num_individuals())
         self.turn_label.config(text=f"TURN: {self.env.turn}")
         self.master.update()
@@ -177,6 +177,7 @@ class GUI(object):
         self.generation_num += 1
         self.generation_num_label.config(text=f'GENERATION #: {self.generation_num}')
         self.next_generation_button.destroy()
+        self.next_generation_button = None
         self.env.next_generation()
         self.update_grid()
 

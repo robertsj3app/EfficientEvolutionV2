@@ -40,9 +40,19 @@ class Environment(object):
         for item in self.individuals:
             tile_list = []
             item.timeToLive -= 1
+            if self.get_tile(item.position).attributes['Hazard'] > 0:
+                if random.random() * 4 < 3.0:
+                    self.remove_individual(item)
+                    continue
             if item.timeToLive == 0:
                 self.remove_individual(item)
                 continue
+            item.score += 1
+            if self.get_tile(item.position).attributes['Water'] > 0:
+                if random.random() * 4 < 3.0:
+                    if self.get_tile(item.position).attributes['Food'] > 0:
+                        item.eat(self.get_tile(item.position))
+                    continue
             sight_range = 2
             surrounding_tiles = self.get_tiles_around(item.position, sight_range)
             #print("")
@@ -90,7 +100,8 @@ class Environment(object):
 
     def next_generation(self):
         self.grid = self.beginning_grid
-        self.generation = self.generation.reproduce(size=self.gen_size, percent=50, gendered=False)
+        self.history = []
+        self.generation = self.generation.reproduce(size=self.gen_size, percent=0.25, gendered=False)
         self.individuals = self.generation.living_individuals
         self.turn = 0
         self.insert_generation()

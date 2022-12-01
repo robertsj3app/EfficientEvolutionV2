@@ -154,7 +154,7 @@ class Individual:
         return self.brain.getPreferredTile(tiles)
 
     def eat(self: Self, tile: Tile) -> None:
-        self.timeToLive += 5
+        self.timeToLive += 1
         tile.attributes['Food'] -= 1
 
     def reproduce(self: Self, other: Individual) -> Individual:
