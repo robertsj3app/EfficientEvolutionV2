@@ -31,7 +31,7 @@ class Tile:
             str = str + f"{key}: {self.attributes[key]}\n"
         str = str + "\nInhabitants:\n"
         for item in self.individuals:
-            str = str + f'{item.id}: Lifespan = {item.timeToLive}'
+            str = str + f'{item.id} ({item.gender}): Lifespan = {item.timeToLive}'
             str = str + '\n'
         return str
 
