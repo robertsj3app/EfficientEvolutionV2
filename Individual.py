@@ -134,6 +134,8 @@ class Individual:
         if not copy:
             self.genome = genome
             self.gender = gender
+            if(self.gender == None):
+                self.gender = random.choice(['m', 'f'])
             self.brain = Brain(bgenome)
             self.id = 0 if len(Individual.ids) == 0 else max(Individual.ids) + 1
             self.position = (-1,-1)
