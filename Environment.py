@@ -21,6 +21,7 @@ class Environment(object):
         self.individuals = self.generation.living_individuals
         self.gen_size = pop_num
         self.beginning_grid = []
+        self.discarding_individuals = []
         #self.label()
 
     def pass_time(self):
@@ -37,15 +38,19 @@ class Environment(object):
 
         self.history.append([[self.grid[i][ii].copy() for ii in range(self.y)] for i in range(self.x)])
 
+        print(len(self.individuals))
+        self.discarding_individuals = []
         for item in self.individuals:
             tile_list = []
             item.timeToLive -= 1
             if self.get_tile(item.position).attributes['Hazard'] > 0:
                 if random.random() * 4 < 3.0:
-                    self.remove_individual(item)
+                    #self.remove_individual(item)
+                    self.discarding_individuals.append(item)
                     continue
             if item.timeToLive == 0:
-                self.remove_individual(item)
+                #self.remove_individual(item)
+                self.discarding_individuals.append(item)
                 continue
             item.score += 1
             if self.get_tile(item.position).attributes['Water'] > 0:
@@ -74,6 +79,8 @@ class Environment(object):
             self.move_one_individual(item, one_position_in_range)
             if tile_in_range.attributes['Food'] > 0:
                 item.eat(tile_in_range)
+        for item in self.discarding_individuals:
+            self.remove_individual(item)
         self.turn += 1
 
     def back_time(self):

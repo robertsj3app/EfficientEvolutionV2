@@ -145,6 +145,7 @@ class Individual:
         else: # shallow copy an individual
             self.genome = None
             self.brain = None
+            self.gender = None
             self.id = 0
             self.position = (-1, -1)
             self.timeToLive = 0
@@ -170,6 +171,7 @@ class Individual:
         new_individual = Individual(genome = None, bgenome = None, copy = True)
         new_individual.genome = None
         new_individual.brain = None
+        new_individual.gender = self.gender
         new_individual.id = self.id
         new_individual.position = self.position
         new_individual.timeToLive = self.timeToLive
