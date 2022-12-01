@@ -44,6 +44,11 @@ class Tile:
         new_tile.individuals = new_inds
         return new_tile
 
+    def copy_empty(self):
+        new_tile = Tile(self.position)
+        new_tile.attributes = copy.deepcopy(self.attributes)
+        return new_tile
+
 #modifiability
 #creature genome
 #what is in a tile

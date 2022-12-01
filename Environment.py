@@ -4,19 +4,23 @@ from Tile import Tile
 from Individual import Individual
 from Individual import TraitGenome
 from GUI import GUI
+from Individual import Generation
 import time
 
 class Environment(object):
-    def __init__(self, width, height):
+    def __init__(self, width, height, pop_num):
         self.x = width
         self.y = height
         self.grid = [[Tile((i, ii)) for ii in range(self.y)] for i in range(self.x)]
         self.current_grid = []# used to remember the grid when going back in time
         self.history = []
         self.appearance = open(r"./Appearance.txt", "w")
-        self.individuals = []
         self.turn = 0
         self.last_wanted_position = (-1,-1)
+        self.generation = Generation(size=pop_num)
+        self.individuals = self.generation.living_individuals
+        self.gen_size = pop_num
+        self.beginning_grid = []
         #self.label()
 
     def pass_time(self):
@@ -28,6 +32,8 @@ class Environment(object):
             self.grid = self.current_grid
             self.turn += 1
             return
+        if self.turn == 0:
+            self.beginning_grid = [[self.grid[i][ii].copy_empty() for ii in range(self.y)] for i in range(self.x)]
 
         self.history.append([[self.grid[i][ii].copy() for ii in range(self.y)] for i in range(self.x)])
 
@@ -36,7 +42,6 @@ class Environment(object):
             item.timeToLive -= 1
             if item.timeToLive == 0:
                 self.remove_individual(item)
-                self.individuals.remove(item)
                 continue
             sight_range = 2
             surrounding_tiles = self.get_tiles_around(item.position, sight_range)
@@ -66,9 +71,13 @@ class Environment(object):
             return
         if self.turn == len(self.history):
             self.current_grid = self.grid
-        print(len(self.history))
+        #print(len(self.history))
         self.grid = self.history[self.turn - 1]
         self.turn -= 1
+
+    def insert_generation(self):
+        for ind in self.generation.living_individuals:
+            self.insert_one_creature(ind, (0,0))
 
     def insert_species(self, ind, positions):
         for pos in positions:
@@ -76,12 +85,21 @@ class Environment(object):
 
     def insert_one_creature(self, ind, position):
         self.get_tile(position).insert_individual(ind)
-        self.individuals.append(ind)
+        #self.individuals.append(ind)
         ind.position = position
+
+    def next_generation(self):
+        self.grid = self.beginning_grid
+        self.generation = self.generation.reproduce(size=self.gen_size, percent=50, gendered=False)
+        self.individuals = self.generation.living_individuals
+        self.turn = 0
+        self.insert_generation()
 
     def remove_individual(self, ind):
         pos = ind.position
         self.grid[pos[0]][pos[1]].remove_individual(ind)
+        self.generation.dead_individuals.append(ind)
+        self.generation.living_individuals.remove(ind)
 
     def move_one_individual(self, ind, new_pos):
         self.get_tile(new_pos).insert_individual(ind)
